@@ -174,32 +174,56 @@ function App() {
           <span className="rubric-tag rubric-tag-red">Criterio 2.1.4</span>
           <h2>4. Responsabilidades Legales de los Actores</h2>
           <div className="card-body">
+            
             <div className="actors-grid">
-              <div className="actor-box inacap-box animate-pop">
-                <h3>Atacante (Lapsus$)</h3>
-                <ul className="animated-list">
-                  <li className="list-item"><strong>Penal:</strong> Tipificada por acceso e interceptación ilícita (Art. 1 y 2 Ley 21.459).</li>
-                  <li className="list-item"><strong>Civil:</strong> Obligación de indemnizar perjuicios financieros por la caída de acciones.</li>
-                </ul>
+              {/* Actor 1: Atacante */}
+              <div className="actor-column">
+                <h3 className="actor-title animate-fade-up">Atacante (Lapsus$)</h3>
+                <div className="resp-boxes">
+                  <div className="resp-box animate-pop item-1">
+                    <span className="resp-tag tag-penal">Penal</span>
+                    <p>Tipificada por acceso e interceptación ilícita (Art. 1 y 2 Ley 21.459).</p>
+                  </div>
+                  <div className="resp-box animate-pop item-2">
+                    <span className="resp-tag tag-civil">Civil</span>
+                    <p>Obligación de indemnizar perjuicios financieros por la caída de acciones de la compañía.</p>
+                  </div>
+                </div>
               </div>
-              <div className="actor-box inacap-box animate-pop">
-                <h3>Empresa (Rockstar Games)</h3>
-                <ul className="animated-list">
-                  <li className="list-item"><strong>Civil:</strong> Contractual frente a inversores por la fuga de propiedad intelectual.</li>
-                  <li className="list-item"><strong>Administrativa:</strong> Auditorías y multas por fallas en la resiliencia de control de accesos.</li>
-                </ul>
+
+              {/* Actor 2: Empresa */}
+              <div className="actor-column">
+                <h3 className="actor-title animate-fade-up">Empresa (Rockstar)</h3>
+                <div className="resp-boxes">
+                  <div className="resp-box animate-pop item-3">
+                    <span className="resp-tag tag-civil">Civil</span>
+                    <p>Responsabilidad contractual frente a inversores por la fuga de propiedad intelectual.</p>
+                  </div>
+                  <div className="resp-box animate-pop item-4">
+                    <span className="resp-tag tag-admin">Administrativa</span>
+                    <p>Auditorías obligatorias y multas por fallas en la resiliencia de control de accesos.</p>
+                  </div>
+                </div>
               </div>
-              <div className="actor-box inacap-box animate-pop">
-                <h3>Terceros (Contratista)</h3>
-                <ul className="animated-list">
-                  <li className="list-item"><strong>Administrativa:</strong> Término inmediato de la relación laboral por incumplir el NDA.</li>
-                  <li className="list-item"><strong>Civil:</strong> Eventual demanda por negligencia al ignorar protocolos básicos de autenticación.</li>
-                </ul>
+
+              {/* Actor 3: Terceros */}
+              <div className="actor-column">
+                <h3 className="actor-title animate-fade-up">Terceros (Contratista)</h3>
+                <div className="resp-boxes">
+                  <div className="resp-box animate-pop item-5">
+                    <span className="resp-tag tag-admin">Administrativa</span>
+                    <p>Término inmediato de la relación laboral o comercial por incumplir el NDA.</p>
+                  </div>
+                  <div className="resp-box animate-pop item-6">
+                    <span className="resp-tag tag-civil">Civil</span>
+                    <p>Eventual demanda por negligencia al ignorar los protocolos básicos de autenticación.</p>
+                  </div>
+                </div>
               </div>
             </div>
+
           </div>
         </section>
-
         {/* 2.1.5 TRATAMIENTO DE DATOS (Slide 5) */}
         <section className={`report-card slide-format ${currentSlide === 5 ? 'active' : 'hidden'}`}>
           <span className="rubric-tag rubric-tag-red">Criterio 2.1.5</span>

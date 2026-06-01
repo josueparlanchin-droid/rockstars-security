@@ -40,7 +40,7 @@ function App() {
           
           <div className="student-info">
             <span className="badge">Evaluación Avanzada</span>
-            <span className="author">Alumno: Draco</span>
+            <span className="author">Alumno: Josué Durand</span>
           </div>
         </div>
       </header>

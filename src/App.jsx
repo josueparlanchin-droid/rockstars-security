@@ -1,13 +1,43 @@
 import './App.css';
 
 function App() {
+  // Función para exportar a PDF usando la herramienta nativa del navegador
+  const handlePrint = () => {
+    window.print();
+  };
+
+  // Función para poner la web en Pantalla Completa
+  const handleFullScreen = () => {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().catch(err => {
+        console.log(`Error al iniciar pantalla completa: ${err.message}`);
+      });
+    } else {
+      document.exitFullscreen();
+    }
+  };
+
   return (
     <div className="app-container">
-      {/* Encabezado Institucional Corregido */}
+      {/* Encabezado Clásico INACAP */}
       <header className="academic-header">
         <div className="header-content">
-          <span className="course-name">Fundamentos de la Seguridad e Información</span>
+          
+          {/* Barra superior con botones */}
+          <div className="header-top-bar">
+            <span className="course-name">INACAP - Fundamentos de la Seguridad e Información</span>
+            <div className="action-buttons">
+              <button onClick={handleFullScreen} className="btn-action">
+                🔲 Pantalla Completa
+              </button>
+              <button onClick={handlePrint} className="btn-action">
+                📄 Exportar PDF
+              </button>
+            </div>
+          </div>
+
           <h1>Análisis de Incidente: Caso Rockstar Games 2022</h1>
+          
           <div className="student-info">
             <span className="badge">Evaluación Avanzada</span>
             <span className="author">Alumno: Draco</span>
@@ -70,8 +100,8 @@ function App() {
                   <td>Aplica a la interceptación o captura de transmisiones no públicas de datos informáticos entre sistemas.</td>
                 </tr>
                 <tr>
-                  <td>Secuestro de datos y posterior extorsión en canales públicos pidiendo dinero para no liberar el código fuente.</td>
-                  <td><strong>Art. 3: Interferencia de datos</strong> y extorsión</td>
+                  <td>Secuestro de datos y extorsión en canales públicos pidiendo dinero.</td>
+                  <td><strong>Art. 3: Interferencia de datos</strong></td>
                   <td>Sanciona la alteración, daño o destrucción de datos informáticos que obstruyan el normal funcionamiento de la organización.</td>
                 </tr>
               </tbody>
@@ -101,7 +131,7 @@ function App() {
                     <td>Penal (Persecución de delitos)</td>
                     <td>Administrativo (Datos Personales)</td>
                     <td>Sistemas de Gestión (Seguridad)</td>
-                    <td rowspan="3" className="app-cell">
+                    <td rowSpan="3" className="app-cell">
                       El atacante infringió el marco penal <strong>(Ley 21.459)</strong>; Rockstar se expone a multas si falló en salvaguardar datos bajo <strong>GDPR</strong>; y debió reestructurar sus políticas internas usando las mejores prácticas de <strong>ISO 27001</strong> para evitar reincidencias de Ingeniería Social.
                     </td>
                   </tr>
@@ -146,7 +176,7 @@ function App() {
               <div className="actor-box">
                 <h3>Terceros (Contratista Comprometido)</h3>
                 <ul>
-                  <li><strong>Responsabilidad Administrativa:</strong> Término inmediato de la relación laboral o comercial por incumplimiento de las políticas de confidencialidad (NDA).</li>
+                  <li><strong>Responsabilidad Administrativa:</strong> Término inmediato de la relación laboral por incumplimiento de las políticas de confidencialidad (NDA).</li>
                   <li><strong>Responsabilidad Civil:</strong> Eventual demanda por negligencia si se demuestra el desacato directo de los protocolos básicos de autenticación.</li>
                 </ul>
               </div>
@@ -172,8 +202,8 @@ function App() {
               <p>Conforme a la <strong>Ley 19.628</strong> sobre Protección de la Vida Privada, se identifican vulneraciones directas:</p>
               <ul>
                 <li><strong>Derecho de Acceso:</strong> El atacante tomó el control de los datos, impidiendo que los legítimos titulares validaran el correcto resguardo de su información laboral en los repositorios expuestos.</li>
-                <li><strong>Derecho de Cancelación / Eliminación:</strong> Los ingenieros perdieron el control para exigir la eliminación de sus datos personales e historiales de chat una vez que estos fueron publicados en foros públicos de hacking.</li>
-                <li><strong>Derecho de Oposición:</strong> Los empleados se vieron imposibilitados de oponerse al tratamiento de sus datos de contacto y rostros (asociados a las filtraciones de las videollamadas), los cuales fueron distribuidos globalmente sin su consentimiento.</li>
+                <li><strong>Derecho de Cancelación:</strong> Los ingenieros perdieron el control para exigir la eliminación de sus datos personales una vez publicados en foros de hacking.</li>
+                <li><strong>Derecho de Oposición:</strong> Los empleados se vieron imposibilitados de oponerse al tratamiento de sus datos de contacto, los cuales fueron distribuidos globalmente sin su consentimiento.</li>
               </ul>
             </div>
           </div>

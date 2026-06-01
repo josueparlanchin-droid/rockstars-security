@@ -1,122 +1,42 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
+    <div className="app-container">
+      {/* Encabezado Institucional */}
+      <header className="academic-header">
+        <div className="header-content">
+          <span className="course-name">Fundamentos de la Seguridad e Información</span>
+          <h1>Reporte de Incidente: Brecha Rockstar Games 2022</h1>
+          <div className="student-info">
+            <span className="badge">Proyecto Académico</span>
+            <span className="author">Autor: Draco</span>
+          </div>
         </div>
-        <div>
-          <h1>Get started</h1>
+      </header>
+
+      {/* Contenido Principal */}
+      <main className="main-content">
+        <section className="report-card abstract">
+          <h2>1. Resumen Ejecutivo</h2>
           <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
+            En septiembre de 2022, un actor de amenazas comprometió la red interna de Rockstar Games. 
+            El ataque no se basó en fuerza bruta contra firewalls, sino en la vulneración del factor humano 
+            mediante <strong>Ingeniería Social</strong> y <strong>MFA Fatigue</strong> (Fatiga de Autenticación Multifactor).
           </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+        </section>
 
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
+        <section className="report-card details">
+          <h2>2. Vectores de Ataque Identificados</h2>
+          <ul className="threat-list">
+            <li><strong>Compromiso de Credenciales:</strong> Obtención de contraseñas de contratistas externos.</li>
+            <li><strong>Fatiga MFA:</strong> Bombardeo de notificaciones push hasta que el usuario aceptó el acceso.</li>
+            <li><strong>Movimiento Lateral:</strong> Acceso a canales de comunicación internos (Slack) y repositorios de código.</li>
           </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+        </section>
+      </main>
+    </div>
+  );
 }
 
-export default App
+export default App;

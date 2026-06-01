@@ -1,8 +1,7 @@
-/* Variables Generales */
 :root {
-  --primary-red: #CC0000; /* Rojo Clásico Institucional */
+  --primary-red: #CC0000;
   --dark-charcoal: #1E1E1E;
-  --light-gray: #F8F9FA;
+  --light-gray: #F4F5F7;
   --border-gray: #E0E0E0;
   --text-dark: #2C3E50;
   --text-muted: #5F6C7D;
@@ -14,21 +13,86 @@ body {
   background-color: var(--light-gray);
   color: var(--text-dark);
   line-height: 1.6;
+  overflow-x: hidden;
 }
 
-/* Animaciones (¡Aquí está la magia!) */
-@keyframes fadeInUp {
+/* Animación Horizontal (Deslizamiento) */
+@keyframes slideInRight {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateX(50px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(0);
   }
 }
 
-/* Encabezado Clásico Institucional */
+.hidden {
+  display: none !important;
+}
+
+.active {
+  display: block;
+  animation: slideInRight 0.4s ease-out forwards;
+}
+
+/* Controles de Navegación */
+.slide-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  border-bottom: 4px solid var(--primary-red);
+}
+
+.btn-nav {
+  background-color: var(--primary-red);
+  color: white;
+  border: none;
+  padding: 0.7rem 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-nav:hover:not(:disabled) {
+  background-color: #A00000;
+}
+
+.btn-nav:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+/* Barra de Progreso */
+.progress-indicator {
+  text-align: center;
+  font-weight: bold;
+  color: var(--dark-charcoal);
+  width: 50%;
+}
+
+.progress-bar {
+  background-color: var(--border-gray);
+  height: 8px;
+  border-radius: 4px;
+  margin-top: 0.5rem;
+  overflow: hidden;
+}
+
+.progress-fill {
+  background-color: var(--primary-red);
+  height: 100%;
+  transition: width 0.3s ease;
+}
+
+/* Encabezado */
 .academic-header {
   background-color: var(--primary-red);
   color: white;
@@ -42,7 +106,6 @@ body {
   margin: 0 auto;
 }
 
-/* Barra de botones */
 .header-top-bar {
   display: flex;
   justify-content: space-between;
@@ -56,7 +119,6 @@ body {
   font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 1.5px;
-  color: #FFD5D5;
   font-weight: 600;
 }
 
@@ -66,29 +128,25 @@ body {
 }
 
 .btn-action {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.2);
   border: 1px solid white;
   color: white;
   padding: 0.5rem 1rem;
   border-radius: 6px;
   cursor: pointer;
-  font-size: 0.9rem;
   font-weight: bold;
-  transition: all 0.3s ease;
+  transition: all 0.3s;
 }
 
 .btn-action:hover {
   background: white;
   color: var(--primary-red);
-  transform: translateY(-2px);
 }
 
 .header-content h1 {
   margin: 0 0 1.2rem 0;
   font-size: 2.4rem;
   font-weight: 800;
-  line-height: 1.2;
-  color: white;
 }
 
 .student-info {
@@ -103,221 +161,99 @@ body {
   border-radius: 4px;
   font-size: 0.8rem;
   font-weight: bold;
-  text-transform: uppercase;
 }
 
-.author {
-  font-size: 0.95rem;
-  font-weight: 500;
-}
-
-/* Contenedor Principal */
 .main-content {
   max-width: 1100px;
-  margin: 3rem auto;
-  padding: 0 1.5rem;
+  margin: 2rem auto;
+  padding: 0 1.5rem 3rem 1.5rem;
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
+  gap: 2rem;
 }
 
-/* Tarjetas con Animación */
+/* Tarjetas y Estética Inacap */
 .report-card {
   background: white;
   padding: 2.5rem;
   border-radius: 8px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-  border: 1px solid var(--border-gray);
   position: relative;
-  
-  /* Configuración de la animación */
-  opacity: 0; /* Inicia invisible */
-  animation: fadeInUp 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  border: 1px solid var(--border-gray);
 }
 
-/* Retraso en cascada para que aparezcan una tras otra */
-.report-card:nth-child(1) { animation-delay: 0.1s; }
-.report-card:nth-child(2) { animation-delay: 0.3s; }
-.report-card:nth-child(3) { animation-delay: 0.5s; }
-.report-card:nth-child(4) { animation-delay: 0.7s; }
-.report-card:nth-child(5) { animation-delay: 0.9s; }
-
-.rubric-tag {
+.rubric-tag-red {
   position: absolute;
   top: 1rem;
   right: 1rem;
-  background: #ECEFF1;
-  color: var(--dark-charcoal);
+  background: var(--primary-red);
+  color: white;
   padding: 0.3rem 0.8rem;
   font-size: 0.8rem;
   font-weight: bold;
   border-radius: 4px;
-  border: 1px solid var(--border-gray);
 }
 
 .report-card h2 {
-  color: var(--primary-red);
+  color: var(--dark-charcoal);
   font-size: 1.5rem;
   margin-top: 0;
   padding-bottom: 0.8rem;
-  border-bottom: 2px solid var(--border-gray);
+  border-bottom: 3px solid var(--primary-red);
   margin-bottom: 1.5rem;
-  max-width: 85%;
+  display: inline-block;
 }
 
-.card-body p {
-  color: var(--text-muted);
-  margin-bottom: 1.5rem;
+/* Detalles decorativos rojos */
+.inacap-border {
+  border-top: 4px solid var(--primary-red) !important;
 }
 
-/* Grid de Normas */
-.norm-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.5rem;
+.inacap-box {
+  border-left: 5px solid var(--primary-red) !important;
+  background: #FFF5F5 !important;
 }
 
-.norm-item {
-  background: var(--light-gray);
-  padding: 1.5rem;
-  border-radius: 8px;
-  border-top: 4px solid var(--dark-charcoal);
-  transition: transform 0.3s ease;
+.inacap-table th {
+  background-color: var(--primary-red) !important;
 }
 
-.norm-item:hover {
-  transform: translateY(-5px);
-}
+.norm-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
+.norm-item { background: var(--light-gray); padding: 1.5rem; border-radius: 8px; }
+.norm-item h3 { margin-top: 0; font-size: 1.1rem; color: var(--dark-charcoal); }
 
-.norm-item h3 {
-  margin-top: 0;
-  font-size: 1.1rem;
-  color: var(--primary-red);
-}
+.table-responsive { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+th, td { padding: 1rem; text-align: left; border-bottom: 1px solid var(--border-gray); }
+th { color: white; font-weight: 600; }
+.app-cell { background-color: #FFF8E1; border-left: 4px solid #FFB300; }
 
-/* Tablas */
-.table-responsive {
-  overflow-x: auto;
-}
+.actors-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+.actor-box { padding: 1.5rem; border-radius: 8px; }
+.actor-box h3 { margin-top: 0; color: var(--dark-charcoal); }
+.actor-box ul { padding-left: 1.2rem; margin-bottom: 0; }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 1rem 0;
-  font-size: 0.95rem;
-}
+.data-classification, .arco-analysis { padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem; }
+.data-classification h3, .arco-analysis h3 { margin-top: 0; color: var(--dark-charcoal); }
 
-th, td {
-  padding: 1rem;
-  text-align: left;
-  border-bottom: 1px solid var(--border-gray);
-}
-
-th {
-  background-color: var(--dark-charcoal);
-  color: white;
-  font-weight: 600;
-}
-
-.legal-table tr:hover, .comparison-table tr:hover {
-  background-color: #F8F9FA;
-}
-
-.app-cell {
-  background-color: #FFF8E1;
-  font-size: 0.9rem;
-  color: #5D4037;
-  vertical-align: middle;
-  border-left: 4px solid #FFB300;
-}
-
-/* Actores */
-.actors-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-}
-
-.actor-box {
-  background: #FFF5F5;
-  padding: 1.5rem;
-  border-radius: 8px;
-  border-left: 5px solid var(--primary-red);
-}
-
-.actor-box h3 {
-  margin-top: 0;
-  color: var(--dark-charcoal);
-}
-
-.actor-box ul {
-  padding-left: 1.2rem;
-  margin-bottom: 0;
-}
-
-.actor-box li {
-  margin-bottom: 0.8rem;
-  font-size: 0.9rem;
-}
-
-/* Secciones de Datos */
-.data-classification, .arco-analysis {
-  background: var(--light-gray);
-  padding: 1.5rem;
-  border-radius: 8px;
-  margin-bottom: 1.5rem;
-  border-left: 4px solid var(--dark-charcoal);
-}
-
-.data-classification h3, .arco-analysis h3 {
-  margin-top: 0;
-  font-size: 1.2rem;
-  color: var(--dark-charcoal);
-}
-
-/* =========================================
-   ESTILOS PARA EXPORTAR A PDF (IMPRESIÓN)
-   ========================================= */
+/* Para que el profesor pueda imprimir TODAS las diapositivas a la vez */
 @media print {
-  body {
-    background-color: white;
-  }
-  
-  /* Ocultar botones al imprimir */
-  .action-buttons {
-    display: none !important;
-  }
-
-  .academic-header {
-    background-color: white !important;
-    color: black !important;
-    border-bottom: 2px solid black;
-    box-shadow: none;
-    padding: 1rem 0;
-  }
-
-  .academic-header h1, .course-name, .author {
-    color: black !important;
-  }
-  
-  .badge {
-    background-color: #eee !important;
-    color: black !important;
-    border: 1px solid black;
-  }
-
-  .report-card {
-    box-shadow: none;
-    border: 1px solid #ccc;
-    break-inside: avoid; /* Evita que las tarjetas se corten a la mitad de la página */
+  .slide-controls, .action-buttons { display: none !important; }
+  .hidden { display: block !important; opacity: 1 !important; }
+  .report-card { 
+    margin-bottom: 2rem; 
+    border: 1px solid #ccc; 
+    break-inside: avoid; 
     page-break-inside: avoid;
-    opacity: 1;
-    animation: none; /* Desactiva animaciones al imprimir */
-    margin-bottom: 20px;
-    padding: 1.5rem;
+    animation: none;
   }
-
-  .app-container {
-    padding: 0;
+  .academic-header { 
+    background-color: white !important; 
+    color: black !important; 
+    border-bottom: 2px solid black; 
+    padding: 1rem 0; 
+    box-shadow: none; 
   }
+  .academic-header h1, .course-name, .author, .btn-action { color: black !important; }
+  .rubric-tag-red { background: #eee !important; color: black !important; border: 1px solid black; }
 }

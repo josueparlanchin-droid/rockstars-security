@@ -41,7 +41,7 @@ function App() {
           <h1>Análisis de Incidente: Caso Rockstar Games 2022</h1>
           <div className="student-info">
             <span className="badge">Evaluación Avanzada</span>
-            <span className="author">Alumno: Draco</span>
+            <span className="author">Alumno: Josué Durand</span>
           </div>
         </div>
       </header>
